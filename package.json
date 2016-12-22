@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.4"
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "mz": "^2.6.0",
+    "react-scripts": "0.8.4",
+    "supertest": "^2.0.1",
+    "supertest-as-promised": "^4.0.2"
   },
   "dependencies": {
     "express": "^4.14.0",
@@ -16,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server-test": "mocha test"
   }
 }
