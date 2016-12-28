@@ -9,13 +9,11 @@ export default class Inventory extends Component {
     this.state = {coins: 0};
   }
   render() {
-    const { ...props } = this.props;
+    const { className, ...props } = this.props;
     return (
-      <div {...props} className="inventory">
-        <div>
-          <div className="coins"></div>
-          <div className="left">{this.state.coins}</div>
-        </div>
+      <div {...props} className={["inventory", className].join(' ')}>
+        <div className="coins"></div>
+        <div className="left">{this.state.coins}</div>
       </div>
     );
   }

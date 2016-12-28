@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-//import Lightbox from '../Lightbox';
+import Layout from '../Layout';
 import Button from '../Button';
 
 import './style.css';
 
-const guessCity = [
-
-]
 export default class City extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +20,7 @@ export default class City extends Component {
     const { data } = this.state;
 
     return (
-      <div {...props} className="container">
+      <Layout {...props} className="container">
         <h1 className="text-capitalize">{params.name}</h1>
 
         {Object.keys(data).length > 0 &&
@@ -33,9 +30,7 @@ export default class City extends Component {
             <Button text='Trade'/>
           </div>
         }
-
-
-      </div>
+      </Layout>
     );
   }
 }
