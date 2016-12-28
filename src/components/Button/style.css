@@ -1,0 +1,43 @@
+@import "../../styles/config.css";
+
+:root {
+  --xl-height: 60px;
+  --l-height: 50px;
+  --m-height: 40px;
+
+  --xl-font-size: 20px;
+  --l-font-size: 18px;
+  --m-font-size: 16px;
+}
+
+.regular {
+  background-color: var( --color-primary );
+  color: var(--color-font-inverse);
+  border: 1px solid var( --color-primary );
+}
+
+.regular:hover, .regular[disabled]:hover {
+  background-color: var( --color-hover );
+  border: 1px solid var( --color-hover );
+}
+
+.regular:active, .regular:focus {
+  background-color: var( --color-selected )!important;
+  border: 1px solid var( --color-selected )!important;
+  outline: none!important;
+}
+
+.large {
+  height: var(--xl-height);
+  font-size: var(--xl-font-size);
+}
+
+.medium {
+  height: var(--l-height);
+  font-size: var(--l-font-size);
+}
+
+.small {
+  height: var(--m-height);
+  font-size: var(--m-font-size);
+}
