@@ -1,16 +1,22 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+//import Lightbox from '../Lightbox';
+import Button from '../Button';
 
 import './style.css';
 
-export default class NotFound extends Component {
-
+export default class City extends Component {
+  openModal(modal) {
+    this.refs[modal].openModal();
+  }
   render() {
     const { ...props } = this.props;
     return (
-      <div {...props}>
+      <div {...props} className="container">
         <h1>
-          City
+          {props.name}
         </h1>
+        <Button text='Trade'/>
+
       </div>
     );
   }
