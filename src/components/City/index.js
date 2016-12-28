@@ -4,18 +4,36 @@ import Button from '../Button';
 
 import './style.css';
 
+const guessCity = [
+
+]
 export default class City extends Component {
-  openModal(modal) {
-    this.refs[modal].openModal();
+  constructor(props) {
+    super(props);
+    this.state = { data: {}}
   }
+  async componentDidMount(){
+    const { params } = this.props;
+    const cityData = await fetch(`/api/cities/${params.name}`).then(res => res.json()).then(res => res);
+    this.setState({...this.state, data: cityData})
+  }
+
   render() {
-    const { ...props } = this.props;
+    const { params, ...props } = this.props;
+    const { data } = this.state;
+
     return (
       <div {...props} className="container">
-        <h1>
-          {props.name}
-        </h1>
-        <Button text='Trade'/>
+        <h1 className="text-capitalize">{params.name}</h1>
+
+        {Object.keys(data).length > 0 &&
+          <div>
+            <h3>Items in this city:</h3>
+            <ul>{data.items.map(item => <li>{item}</li>)}</ul>
+            <Button text='Trade'/>
+          </div>
+        }
+
 
       </div>
     );

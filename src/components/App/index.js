@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
+import {browserHistory} from 'react-router';
+import Inventory from '../Inventory';
+
 import './style.css';
 
 const City = (props) =>
   <div className="cityWrap" onClick={props.onClick} style={{top: props.position.top, right: props.position.right}}>
-    <small>{props.name}</small>
+    <small className="text-capitalize">{props.name}</small>
     <div className="circle" />
   </div>;
 
 const cities = [
   {
-    name: 'Valencia',
+    name: 'valencia',
     position: {
       top: '40%',
       right: '90%'
     }
   },
   {
-    name: 'Barcelona',
+    name: 'barcelona',
     position: {
       top: '20%',
       right: '90%'
     }
   },
   {
-    name: 'Athens',
+    name: 'athens',
     position: {
       top: '20%',
       right: '0%'
@@ -39,7 +42,9 @@ class App extends Component {
   }
   handleClick(index){
     this.setState({...this.state, position: cities[index].position});
-
+    setTimeout(() => {
+      browserHistory.push(`/city/${cities[index].name}`);
+    }, 3000);
   }
   render() {
     const { ...props } = this.props;
@@ -54,6 +59,7 @@ class App extends Component {
                   name={city.name}
                   onClick={this.handleClick.bind(null,index)}/>
           )}
+          <Inventory style={{position: 'absolute', bottom: '10px'}}/>
         </div>
       </div>
     );
