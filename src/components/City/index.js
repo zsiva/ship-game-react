@@ -18,18 +18,21 @@ export default class City extends Component {
   render() {
     const { params, ...props } = this.props;
     const { data } = this.state;
+    console.log('Data', data.img);
 
     return (
-      <Layout {...props} className="container">
-        <h1 className="text-capitalize">{params.name}</h1>
+      <Layout {...props}>
+        <div className="container city">
+          <h1 className="text-capitalize">{params.name}</h1>
 
-        {Object.keys(data).length > 0 &&
-          <div>
-            <h3>Items in this city:</h3>
-            <ul>{data.items.map(item => <li>{item}</li>)}</ul>
-            <Button text='Trade'/>
-          </div>
-        }
+          {Object.keys(data).length > 0 &&
+            <div>
+              <h3>Items in this city:</h3>
+              <ul>{data.items.map(item => <li>{item}</li>)}</ul>
+              <Button text='Trade'/>
+            </div>
+          }
+        </div>
       </Layout>
     );
   }

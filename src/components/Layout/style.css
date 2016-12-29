@@ -1,4 +1,7 @@
-.absolute{
-  position: absolute;
-  bottom: 10px;
+.menu{
+  margin-bottom: 10px;
+  padding: 10px;
+  color: white;
+  background-color: black;
+  height: 60px;
 }

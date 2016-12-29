@@ -24,6 +24,6 @@ module.exports = {
     console.log('list!');
     list = [];//await getList();
 
-    res.json(list));
+    res.json(list);
   }
 }

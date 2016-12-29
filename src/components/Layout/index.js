@@ -11,13 +11,15 @@ class Layout extends Component {
 
     return (
       <div className={["App", className].join(' ')}>
+        <div className="menu">
+          {Object.keys(routeParams).length > 0 &&
+            <Button text="Back to sailing" size="small"
+              onClick={() => browserHistory.push(`/`)}/>
+          }
+            <Inventory className="pull-right"/>
+        </div>
         {this.props.children}
-        {Object.keys(routeParams).length > 0 &&
-          <Button
-            className="absolute"
-            style={{left: '10px'}} text="Back to sailing"
-            onClick={() => browserHistory.push(`/`)}/>}
-        <Inventory className="absolute" style={{right: '10px'}}/>
+
       </div>
     );
   }
