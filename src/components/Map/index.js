@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
 import Layout from '../Layout';
-
+import { connect } from 'react-redux';
+import * as mapActions from '../../actions';
 import './style.css';
 
 const City = (props) =>
@@ -40,16 +41,23 @@ class Map extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.state = {position: cities[0].position};
   }
+  componentDidMount(){
+    console.log('state on mount', this.state);
+  }
   handleClick(index){
     this.setState({...this.state, position: cities[index].position});
+    this.props.setBoatPosition(cities[index].position);
+
     setTimeout(() => {
       browserHistory.push(`/city/${cities[index].name}`);
     }, 3000);
   }
   render() {
     const { ...props } = this.props;
+
     return (
-      <Layout {...props} className="map">
+      <Layout {...props} >
+        <div className="map">
         <div className="container citiesWrap">
           <h4>Travel around and get all the items!</h4>
           <div className="ship" style={this.state.position}/>
@@ -60,9 +68,19 @@ class Map extends Component {
                   onClick={this.handleClick.bind(null,index)}/>
           )}
         </div>
+        </div>
       </Layout>
     );
   }
 }
 
-export default Map;
+const mapStateToProps = (state, ownProps) => {
+  position: state.position
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setBoatPosition: pos => dispatch(mapActions.setBoatPosition(pos))
+  }
+};
+export default connect( mapStateToProps, mapDispatchToProps )( Map );
